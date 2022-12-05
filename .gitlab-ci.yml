@@ -1,5 +1,7 @@
 workflow:
   rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
     - when: always
 
 
@@ -22,13 +24,10 @@ stages:
     - wget --no-verbose https://chromedriver.storage.googleapis.com/107.0.5304.18/chromedriver_linux64.zip && unzip chromedriver_linux64.zip
     - export PATH=`pwd`:${PATH}
     - pip install -r requirements.txt
-    - pip install -i https://bbpteam.epfl.ch/repository/devpi/simple .
 
 
 check_dom_sbo:
   stage: sbo_checks
-  rules:
-    - if: $PIPELINE_SELECT == $CI_JOB_NAME
   image: python:3.8-buster
   script:
     - *setup-env
@@ -37,7 +36,7 @@ check_dom_sbo:
     - Xvfb :99 &
     - export DISPLAY=:99
     - py.test -s sbo_dom_check.py || exit_code=1
-    - slack_reporter --ok_url $SLACK_LINK_OK --err_url $SLACK_LINK_NOK --name "SBO Dom Check" --filename page_dom_check.log --status $exit_code
+    - python3 ./slack_reporter.py --ok_url $SLACK_LINK_OK --err_url $SLACK_LINK_NOK --name "SBO Dom Check" --status $exit_code
     - exit $exit_code
   artifacts:
     when: always

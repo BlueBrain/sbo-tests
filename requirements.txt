@@ -1,0 +1,7 @@
+click
+requests
+selenium-wire
+pillow
+pytest
+pytest-repeat
+seleniumbase==4.7.0
