@@ -82,7 +82,7 @@ def make_full_screenshot(driver, savename):
     img_frame.save(savename)
 
 
-def find_element(driver, method, name):
+def find_element(driver, method, name, operator=None, count=None):
     """Returns True, if elements exists in webpage, False else.
 
     Args:
@@ -90,7 +90,20 @@ def find_element(driver, method, name):
         name (string): Name of the element to find.
     """
     try:
-        driver.find_element(name, by=method, timeout=1.0)
+        if count:
+            elements = driver.find_elements(name, by=method)
+            if operator == '=' and len(elements) != count:
+                return False
+            elif operator == '>' and len(elements) <= count:
+                return False
+            elif operator == '<' and len(elements) >= count:
+                return False
+            elif operator == '>=' and len(elements) < count:
+                return False
+            elif operator == '<=' and len(elements) > count:
+                return False
+        else:
+            driver.find_element(name, by=method, timeout=1.0)
         return True
     except exceptions.NoSuchElementException:
         return False
@@ -109,7 +122,7 @@ def write_errors(filename, site, url, errors):
         fileout.write(f"{site} -> {url}: {errors}\n")
 
 
-def check_url(driver, url):
+def check_url(driver, url, elements=None):
     """Function to check a single URL."""
 
     time0 = time.time()
@@ -122,13 +135,35 @@ def check_url(driver, url):
     debug(f"Opening URL {url}")
     driver.open(url)
 
+    if elements:
+        for info in elements:
+            if len(info) == 2:
+                method, element = info
+                count = None
+                operator = None
+            elif len(info) == 4:
+                method, element, operator, count = info
+
+            found = find_element(driver, method, element, operator, count)
+            if not found:
+                raise RuntimeError(f'Element {element} not found')
+
     # Close the current driver
     driver.driver.close()
     driver.driver.quit()
 
 
-def test_sbo(selbase):
+def load_test_data():
+    with open('sbo-dom-checks.json', 'r') as fp:
+        test_data = json.load(fp)
+    return test_data
+
+
+@pytest.mark.parametrize("path,elements", load_test_data())
+def test_sbo(selbase, path, elements):
     """Runs the tests for the SSCX dom checks."""
 
-    url = 'https://bbp.epfl.ch/mmb-beta'
-    check_url(selbase, url)
+    resource = 'https://bbp.epfl.ch'
+    url = f'{resource}{path}'
+    print(f"Checking {url} with elements {elements}")
+    check_url(selbase, url, elements)
