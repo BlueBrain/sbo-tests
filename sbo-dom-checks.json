@@ -25,12 +25,12 @@
             ["xpath", "//div[text()='Simulation Campaigns']"],
             ["xpath", "//input[@type='text' and @value='']"],
             ["xpath", "//input[@type='text' and @value='']/../../span/button/span[text()='Search']"],
-            ["xpath", "//table/thead/tr/th/div[text()='Name']"],
-            ["xpath", "//table/thead/tr/th/div[text()='Description']"],
-            ["xpath", "//table/thead/tr/th/div[text()='Configuration']"],
-            ["xpath", "//table/thead/tr/th/div[text()='Dimensions']"],
-            ["xpath", "//table/thead/tr/th/div[text()='Attributes']"],
-            ["xpath", "//table/thead/tr/th/div[text()='Tags']"],
+            ["xpath", "//table/thead/tr/th/div/span/div[text()='Name']"],
+            ["xpath", "//table/thead/tr/th/div/span/div[text()='Description']"],
+            ["xpath", "//table/thead/tr/th/div/span/div[text()='Configuration']"],
+            ["xpath", "//table/thead/tr/th/div/span/div[text()='Dimensions']"],
+            ["xpath", "//table/thead/tr/th/div/span/div[text()='Attributes']"],
+            ["xpath", "//table/thead/tr/th/div/span/div[text()='Tags']"],
             ["xpath", "//table/tbody/tr/td/div/div[@class='ant-empty-description' and text()='No data']"]
         ]
     ],
