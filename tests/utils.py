@@ -1,27 +1,32 @@
-"""DOM checker for portal pages.
-
-The code will load random pages and checks for expected DOM elements.
-"""
-# pylint: disable=R0913
-
-import time
 import json
-import random
+import logging
+import os
+import time
+
 from io import BytesIO
 from PIL import Image
-
-import pytest
 from selenium.common import exceptions
+from selenium.webdriver.support.wait import WebDriverWait
 
 
-# TODO: actually add output
-LOG_OUTPUT = "page_dom_check.log"
+logger = logging.getLogger()
+fmt = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+fh = logging.FileHandler("page_dom_check.log")
+fh.setLevel(logging.DEBUG)
+fh.setFormatter(fmt)
+logger.addHandler(fh)
+sh = logging.StreamHandler()
+sh.setLevel(logging.INFO)
+sh.setFormatter(fmt)
+logger.addHandler(sh)
+logger.setLevel(logging.DEBUG)
 
 
 def make_full_screenshot(driver, savename):
     """Performs a full screenshot of the entire page.
     Taken from https://gist.github.com/fabtho/13e4a2e7cfbfde671b8fa81bbe9359fb
     """
+    logger.debug('Making full-page screenshot')
     # initiate value
     img_list = []  # to store image fragment
     offset = 0  # where to start
@@ -82,13 +87,32 @@ def make_full_screenshot(driver, savename):
     img_frame.save(savename)
 
 
-def find_element(driver, method, name, operator=None, count=None):
+def wait_for_element(selbase, element, find_by='xpath', timeout=10):
+    """
+    Wait for an element to appear
+    Args:
+        selbase (selbase): the selenium base object
+        element (string): the element to find
+        find_by (string): how to locate the element (defaults to xpath)
+        timeout (int): how long, in seconds, to wait (defaults to 10)
+    """
+    logger.debug('Waiting for %s by %s for up to %s seconds', element, find_by, timeout)
+    WebDriverWait(selbase, timeout=timeout).until(
+        lambda d: d.find_element(element, by=find_by),
+        message=f'Timeout waiting for {element} on {selbase.get_current_url()}')
+
+
+def element_exists(driver, method, name, operator=None, count=None):
     """Returns True, if elements exists in webpage, False else.
 
     Args:
+        driver (selbase): the selenium base object
         method (string): Name of the selenium method to find an element.
         name (string): Name of the element to find.
+        operator (string): optionally, how to compare count to the amount of elements found
+        count (int): how many should be found (at most, at least, ... - see operator)
     """
+    logger.debug('Checking whether %s exists', name)
     try:
         if count:
             elements = driver.find_elements(name, by=method)
@@ -109,30 +133,13 @@ def find_element(driver, method, name, operator=None, count=None):
         return False
 
 
-def write_errors(filename, site, url, errors):
-    """Adds a new entry to the output file when an expected ID is not found.
-
-    Args:
-        filename (string): Output filename.
-        site (string): The portal site the error has been found on.
-        url (string): The exact URL on which the error has been found.
-        errors (list): The element(s) that were not found.
-    """
-    with open(filename, "a+") as fileout:
-        fileout.write(f"{site} -> {url}: {errors}\n")
-
-
 def check_url(driver, url, elements=None):
     """Function to check a single URL."""
 
     time0 = time.time()
 
-    def debug(txt):
-        time_now = time.time() - time0
-        print(f"    {time_now:.1f} - {txt}")
-
     # Call selenium method to open URL
-    debug(f"Opening URL {url}")
+    logger.debug(f"Opening URL {url}")
     driver.open(url)
 
     if elements:
@@ -144,7 +151,8 @@ def check_url(driver, url, elements=None):
             elif len(info) == 4:
                 method, element, operator, count = info
 
-            found = find_element(driver, method, element, operator, count)
+            logger.info('Checking element %s', element)
+            found = element_exists(driver, method, element, operator, count)
             if not found:
                 raise RuntimeError(f'Element {element} not found')
 
@@ -154,16 +162,59 @@ def check_url(driver, url, elements=None):
 
 
 def load_test_data():
-    with open('sbo-dom-checks.json', 'r') as fp:
+    with open('data/sbo-dom-checks.json', 'r') as fp:
         test_data = json.load(fp)
     return test_data
 
 
-@pytest.mark.parametrize("path,elements", load_test_data())
-def test_sbo(selbase, path, elements):
-    """Runs the tests for the SSCX dom checks."""
+def get_credentials():
+    """
+    Retrieve the credentials to use.
+    First checks for MMB_LOGIN and MMB_PASSWORD variables in the environment
+    (e.g. for gitlab use).
+    If both aren't present, checks for data/credentials.json
+    (e.g. for development use).
+    The json file is very simple:
+    {
+        "username": "<username>",
+        "password": "<password>"
+    }
+    """
+    if 'MMB_LOGIN' in os.environ and 'MMB_PASSWORD' in os.environ:
+        credentials = {'username': os.environ['MMB_LOGIN'],
+                       'password': os.environ['MMB_PASSWORD']}
+    else:
+        with open('data/credentials.json', 'r') as fp:
+            credentials = json.load(fp)
 
-    resource = 'https://bbp.epfl.ch'
-    url = f'{resource}{path}'
-    print(f"Checking {url} with elements {elements}")
-    check_url(selbase, url, elements)
+    return credentials
+
+
+def login(selbase):
+    """Logs in"""
+
+    resource = 'https://bbp.epfl.ch/mmb-beta'
+    selbase.open(resource)
+    try:
+        logger.info('Looking for login button')
+        login_button = selbase.find_element('//button[text()="Login"]', by='xpath')
+    except NoSuchElementException:
+        logger.info('Login button not found - assuming already logged in')
+        return
+    login_button.click()
+    username_field = '//input[@id="username"]'
+    password_field = '//input[@id="password"]'
+    login = '//input[@id="kc-login"]'
+    for element in [username_field, password_field, login]:
+        wait_for_element(selbase, element)
+
+    credentials = get_credentials()
+
+    logger.debug('Entering credentials')
+    selbase.find_element(username_field, by='xpath').send_keys(
+        credentials['username'])
+    selbase.find_element(password_field, by='xpath').send_keys(
+        credentials['password'])
+    selbase.find_element(login, by='xpath').click()
+
+    wait_for_element(selbase, '//button[text()="Logout"]')

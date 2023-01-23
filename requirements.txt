@@ -1,7 +1,9 @@
 click
+furl
 requests
 selenium-wire
 pillow
 pytest
 pytest-repeat
+pytest-reportlog
 seleniumbase==4.7.0

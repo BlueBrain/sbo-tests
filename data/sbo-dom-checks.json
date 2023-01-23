@@ -2,7 +2,6 @@
     [
         "/mmb-beta",
         [
-            ["xpath", "//button[text()='Login']"],
             ["xpath", "//div[text()='Observatory']"],
             ["xpath", "//div[text()='Brain Factory']"],
             ["xpath", "//div[text()='Virtual Lab']"]
@@ -11,17 +10,17 @@
     [
         "/mmb-beta/observatory",
         [
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns']/div/h1[text()='Brain & cells annotations']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns']/div/h1[text()='Experimental Data']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns']/div/h1[text()='Digital reconstructions']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns']/div/h1[text()='Simulations']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Brain & cells annotations']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Experimental Data']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Digital reconstructions']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Simulations']"],
             ["xpath", "//button[text()='Browse']", "=", 4]
         ]
     ],
     [
         "/mmb-beta/simulation-campaigns",
         [
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/observatory' and text()='Simulation Observatory']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/observatory?' and text()='Simulation Observatory']"],
             ["xpath", "//div[text()='Simulation Campaigns']"],
             ["xpath", "//input[@type='text' and @value='']"],
             ["xpath", "//input[@type='text' and @value='']/../../span/button/span[text()='Search']"],
@@ -38,10 +37,10 @@
         "/mmb-beta/brain-factory/load-brain-config",
         [
             ["xpath", "//div[text()='Release 23.01']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta' and text()='Back home']"],
-            ["xpath", "//table/thead/tr/th[text()='NAME']"],
-            ["xpath", "//table/thead/tr/th[text()='DESCRIPTION']"],
-            ["xpath", "//table/thead/tr/th[text()='CREATED BY']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta?' and text()='Back home']"],
+            ["xpath", "//table/thead/tr/th/div/span[text()='NAME']"],
+            ["xpath", "//table/thead/tr/th/div/span[text()='DESCRIPTION']"],
+            ["xpath", "//table/thead/tr/th/div/span[text()='CREATED BY']"],
             ["xpath", "//button/span[text()='Public configurations']"],
             ["xpath", "//button/span[text()='My configurations']"],
             ["xpath", "//button/span[text()='Archives']"],
@@ -51,11 +50,11 @@
     [
         "/mmb-beta/brain-factory/cell-model-assignment",
         [
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/cell-composition/interactive' and text()='Cell composition']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/cell-model-assignment' and text()='Cell model assignment']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/connectome-definition' and text()='Connectome definition']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/connectome-model-assignment' and text()='Connection model assignment']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta?']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/cell-composition/interactive?' and text()='Cell composition']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/cell-model-assignment?' and text()='Cell model assignment']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/connectome-definition?' and text()='Connectome definition']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/connectome-model-assignment?' and text()='Connection model assignment']"],
             ["xpath", "//button[text()='Build & Simulate']"]
         ]
     ]

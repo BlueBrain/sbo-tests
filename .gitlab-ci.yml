@@ -11,19 +11,20 @@ stages:
 
 .setup-env: &setup-env
     - apt-get update
-    - apt-get install -y unzip curl software-properties-common  vim git python3-pip python3 xvfb
-    - curl https://dl-ssl.google.com/linux/linux_signing_key.pub -o /tmp/google.pub
-    - cat /tmp/google.pub | apt-key add -
-    - echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google.list
+    - apt-get install -y unzip curl software-properties-common  vim git python3-pip python3 xvfb jq firefox-esr
+  # - curl https://dl-ssl.google.com/linux/linux_signing_key.pub -o /tmp/google.pub
+  # - cat /tmp/google.pub | apt-key add -
+  # - echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google.list
     - mkdir -p /usr/share/desktop-directories
-    - wget --no-verbose -O /tmp/chrome.deb http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_107.0.5304.87-1_amd64.deb && apt install -y /tmp/chrome.deb && rm /tmp/chrome.deb
-    - dpkg-divert --add --rename --divert /opt/google/chrome/google-chrome.real /opt/google/chrome/google-chrome
-    - echo -e "#!/bin/bash\nexec /opt/google/chrome/google-chrome.real --no-sandbox --disable-setuid-sandbox \"\$@\"" > /opt/google/chrome/google-chrome
-    - chmod 755 /opt/google/chrome/google-chrome
-    - google-chrome --version
-    - wget --no-verbose https://chromedriver.storage.googleapis.com/107.0.5304.18/chromedriver_linux64.zip && unzip chromedriver_linux64.zip
+  # - wget --no-verbose -O /tmp/chrome.deb http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_107.0.5304.87-1_amd64.deb && apt install -y /tmp/chrome.deb && rm /tmp/chrome.deb
+  # - dpkg-divert --add --rename --divert /opt/google/chrome/google-chrome.real /opt/google/chrome/google-chrome
+  # - echo -e "#!/bin/bash\nexec /opt/google/chrome/google-chrome.real --no-sandbox --disable-setuid-sandbox \"\$@\"" > /opt/google/chrome/google-chrome
+  # - chmod 755 /opt/google/chrome/google-chrome
+  # - google-chrome --version
+  # - wget --no-verbose https://chromedriver.storage.googleapis.com/107.0.5304.18/chromedriver_linux64.zip && unzip chromedriver_linux64.zip
     - export PATH=`pwd`:${PATH}
     - pip install -r requirements.txt
+    - sbase get geckodriver
 
 
 check_dom_sbo:
@@ -35,10 +36,21 @@ check_dom_sbo:
     - exit_code=0
     - Xvfb :99 &
     - export DISPLAY=:99
-    - py.test -s sbo_dom_check.py || exit_code=1
-    - python3 ./slack_reporter.py --ok_url $SLACK_LINK_OK --err_url $SLACK_LINK_NOK --name "SBO Dom Check" --status $exit_code
+    - py.test --firefox --headless --junitxml=testresults.xml --report-log report.log -s tests/sbo_dom_check.py || exit_code=1
+    - message=$(jq 'select(.outcome=="failed") | {URL:.longrepr.reprtraceback.reprentries[0].data.reprfuncargs.args[1][1], Issue:.longrepr.reprcrash.message}' report.log)
+    - echo "${CI_PIPELINE_SOURCE}"
+    - if [ "${CI_PIPELINE_SOURCE}" = "schedule" ]; then
+    -     python3 ./slack_reporter.py --ok_url $SLACK_LINK_OK --err_url $SLACK_LINK_NOK --name "SBO Dom Check" --message "${message}" --status $exit_code
+    - else
+    -     echo "${message}"
+    - fi
     - exit $exit_code
   artifacts:
     when: always
+    reports:
+      junit: testresults.xml
     paths:
       - output
+      - latest_logs
+      - report.log
+      - page_dom_check.log
