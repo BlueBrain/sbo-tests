@@ -8,12 +8,12 @@ import requests
 @click.option(
     "-o",
     "--ok_url",
-    help="Defines the URL to be used in case the check was OK.",
+    help="Defines the URL to be used in case the check was OK. Comma-separate for multiple.",
 )
 @click.option(
     "-e",
     "--err_url",
-    help="Defines the URL to be used in case the check was NOK.",
+    help="Defines the URL to be used in case the check was NOK. Comma-separate for multiple.",
 )
 @click.option(
     "-n",
@@ -39,15 +39,15 @@ def slack_report(ok_url, err_url, name, filename, message, status):
     """Main linkchecker method.
 
     Args:
-        ok_url (string): Url to use of the check was OK
-        err_url (string): Url to use of the check was NOK
+        ok_url (string): Url to use of the check was OK. Comma-separate for multiple.
+        err_url (string): Url to use of the check was NOK. Comma-separate for multiple.
         name (string): Name to use for this check (e.g. SSCX, Portal)
         filename (string): Filename whose content gets added to the slack message in case of failure
         status (int): Exit code from the previous command (by using $? in the CI).
     """
     if int(status) == 0:
         print("Check was OK")
-        url = ok_url
+        urls = [url.strip() for url in ok_url.split(',')]
         text = f"{name} OK"
         data = {'text': text, 'icon_emoji': ':frog:', 'username': name}
     else:
@@ -58,12 +58,13 @@ def slack_report(ok_url, err_url, name, filename, message, status):
         else:
             msg = message
         text = f"*** {name} ERROR:\n{msg}"
-        url = err_url
+        urls = [url.strip() for url in err_url.split(',')]
         data = {'text': text, 'icon_emoji': ':crab:', 'username': name}
 
-    print(f"Sending to URL {url}")
-    resp = requests.post(url, json=data)
-    print(resp.status_code)
+    for url in urls:
+        print(f"Sending to URL {url}")
+        resp = requests.post(url, json=data)
+        print(resp.status_code)
 
 if __name__ == '__main__':
     slack_report()

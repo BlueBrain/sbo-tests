@@ -40,7 +40,7 @@ check_dom_sbo:
     - message=$(jq 'select(.outcome=="failed") | {URL:.longrepr.reprtraceback.reprentries[0].data.reprfuncargs.args[1][1], Issue:.longrepr.reprcrash.message}' report.log)
     - echo "${CI_PIPELINE_SOURCE}"
     - if [ "${CI_PIPELINE_SOURCE}" = "schedule" ]; then
-    -     python3 ./slack_reporter.py --ok_url $SLACK_LINK_OK --err_url $SLACK_LINK_NOK --name "SBO Dom Check" --message "${message}" --status $exit_code
+    -     python3 ./slack_reporter.py --ok_url $SLACK_LINK_OK --err_url $SLACK_LINK_NOK,$SLACK_LINK_MMB --name "SBO Dom Check" --message "${message}" --status $exit_code
     - else
     -     echo "${message}"
     - fi
