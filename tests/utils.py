@@ -97,9 +97,28 @@ def wait_for_element(selbase, element, find_by='xpath', timeout=10):
         timeout (int): how long, in seconds, to wait (defaults to 10)
     """
     logger.debug('Waiting for %s by %s for up to %s seconds', element, find_by, timeout)
-    WebDriverWait(selbase, timeout=timeout).until(
+    element = WebDriverWait(selbase, timeout=timeout).until(
         lambda d: d.find_element(element, by=find_by),
         message=f'Timeout waiting for {element} on {selbase.get_current_url()}')
+
+    return element
+
+
+def wait_for_elements(selbase, element, find_by='xpath', timeout=10):
+    """
+    Wait for an element to appear
+    Args:
+        selbase (selbase): the selenium base object
+        element (string): the element to find
+        find_by (string): how to locate the element (defaults to xpath)
+        timeout (int): how long, in seconds, to wait (defaults to 10)
+    """
+    logger.debug('Waiting for %s by %s for up to %s seconds', element, find_by, timeout)
+    elements = WebDriverWait(selbase, timeout=timeout).until(
+        lambda d: d.find_elements(element, by=find_by),
+        message=f'Timeout waiting for {element} on {selbase.get_current_url()}')
+
+    return elements
 
 
 def element_exists(driver, method, name, operator=None, count=None):
@@ -115,7 +134,7 @@ def element_exists(driver, method, name, operator=None, count=None):
     logger.debug('Checking whether %s exists', name)
     try:
         if count:
-            elements = driver.find_elements(name, by=method)
+            elements = wait_for_elements(driver, name, find_by=method)
             if operator == '=' and len(elements) != count:
                 return False
             elif operator == '>' and len(elements) <= count:
@@ -127,7 +146,7 @@ def element_exists(driver, method, name, operator=None, count=None):
             elif operator == '<=' and len(elements) > count:
                 return False
         else:
-            driver.find_element(name, by=method, timeout=1.0)
+            wait_for_element(driver, name, find_by=method)
         return True
     except exceptions.NoSuchElementException:
         return False
@@ -210,7 +229,7 @@ def login(selbase):
 
     credentials = get_credentials()
 
-    logger.debug('Entering credentials')
+    logger.debug('Logging in with user %s', credentials['username'])
     selbase.find_element(username_field, by='xpath').send_keys(
         credentials['username'])
     selbase.find_element(password_field, by='xpath').send_keys(

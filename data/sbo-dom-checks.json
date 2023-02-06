@@ -20,7 +20,7 @@
     [
         "/mmb-beta/simulation-campaigns",
         [
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/observatory?' and text()='Simulation Observatory']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/mmb-beta/observatory?' and text()='The Observatory']"],
             ["xpath", "//div[text()='Simulation Campaigns']"],
             ["xpath", "//input[@type='text' and @value='']"],
             ["xpath", "//input[@type='text' and @value='']/../../span/button/span[text()='Search']"],
@@ -30,7 +30,8 @@
             ["xpath", "//table/thead/tr/th/div/span/div[text()='Dimensions']"],
             ["xpath", "//table/thead/tr/th/div/span/div[text()='Attributes']"],
             ["xpath", "//table/thead/tr/th/div/span/div[text()='Tags']"],
-            ["xpath", "//table/tbody/tr/td/div/div[@class='ant-empty-description' and text()='No data']"]
+            ["xpath", "//table/tbody[@class='ant-table-tbody']/tr[contains(@class, 'ant-table-row')]", ">=", 1],
+            ["xpath", "//table/tbody[@class='ant-table-tbody']/tr[contains(@class, 'ant-table-row')][1]/td[contains(@class, 'ant-table-cell')]", "=", 8]
         ]
     ],
     [
