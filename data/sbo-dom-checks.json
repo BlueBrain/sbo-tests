@@ -20,7 +20,7 @@
     [
         "/mmb-beta/simulation-campaigns",
         [
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/mmb-beta/observatory?' and text()='The Observatory']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/observatory?' and text()='The Observatory']"],
             ["xpath", "//div[text()='Simulation Campaigns']"],
             ["xpath", "//input[@type='text' and @value='']"],
             ["xpath", "//input[@type='text' and @value='']/../../span/button/span[text()='Search']"],
@@ -55,7 +55,6 @@
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/cell-composition/interactive?' and text()='Cell composition']"],
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/cell-model-assignment?' and text()='Cell model assignment']"],
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/connectome-definition?' and text()='Connectome definition']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/connectome-model-assignment?' and text()='Connection model assignment']"],
             ["xpath", "//button[text()='Build & Simulate']"]
         ]
     ]

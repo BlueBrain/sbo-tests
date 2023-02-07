@@ -159,7 +159,11 @@ def check_url(driver, url, elements=None):
 
     # Call selenium method to open URL
     logger.debug(f"Opening URL {url}")
-    driver.open(url)
+    try:
+        driver.open(url)
+    except:  # no Exception type as the expected one does not seem to get caught
+        logger.critical(f"Issue while opening {url} - retrying once.")
+        driver.open(url)
 
     if elements:
         for info in elements:
