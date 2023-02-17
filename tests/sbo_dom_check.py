@@ -56,7 +56,7 @@ def test_open_brain_factory(sb):
     logger.info('Config ID: %s', refConfigId)
     config_link.click()
 
-    titles = ['Brain region', 'Whole mouse brain']
+    titles = ['Brain region', 'Basic cell groups and regions']
     for title in titles:
         logger.info('Checking for %s title', title)
         tree_xpath = f'//span[text()="{title}"]'
