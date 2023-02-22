@@ -33,7 +33,6 @@ def test_open_brain_factory(sb):
       * Connectome Definition
       * Connectome Model Assignment
       * Interactive
-      * Analysis
       * Configuration
       * Build & Simulate
     """
@@ -78,7 +77,6 @@ def test_open_brain_factory(sb):
 
     buttons = [
         ("Interactive", f"/mmb-beta/mmb-beta/brain-factory/cell-composition/interactive?brainModelConfigId={refConfigId}"),
-        ("Analysis", f"/mmb-beta/mmb-beta/brain-factory/cell-composition/analysis?brainModelConfigId={refConfigId}"),
         ("Configuration", f"/mmb-beta/mmb-beta/brain-factory/cell-composition/configuration?brainModelConfigId={refConfigId}")
     ]
     for button in buttons:
