@@ -11,7 +11,7 @@
         "/mmb-beta/observatory",
         [
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Brain & cells annotations']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Experimental Data']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/experimental-data?']/div/h1[text()='Experimental Data']"],
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Digital reconstructions']"],
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Simulations']"],
             ["xpath", "//button[text()='Browse']", "=", 4]
