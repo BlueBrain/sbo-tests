@@ -2,9 +2,9 @@
     [
         "/mmb-beta",
         [
-            ["xpath", "//div[text()='Observatory']"],
-            ["xpath", "//div[text()='Brain Factory']"],
-            ["xpath", "//div[text()='Virtual Lab']"]
+            ["xpath", "//div[text()='Brain Observatory']"],
+            ["xpath", "//div[text()='Brain Lab']"],
+            ["xpath", "//div[text()='Brain Simulation']"]
         ]
     ],
     [
@@ -35,7 +35,7 @@
         ]
     ],
     [
-        "/mmb-beta/brain-factory/load-brain-config",
+        "/mmb-beta/lab/load-brain-config",
         [
             ["xpath", "//div[text()='Release 23.01']"],
             ["xpath", "//a[@href='/mmb-beta/mmb-beta?' and text()='Back home']"],
@@ -49,12 +49,12 @@
         ]
     ],
     [
-        "/mmb-beta/brain-factory/cell-model-assignment",
+        "/mmb-beta/lab/cell-model-assignment",
         [
             ["xpath", "//a[@href='/mmb-beta/mmb-beta?']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/cell-composition/interactive?' and text()='Cell composition']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/cell-model-assignment?' and text()='Cell model assignment']"],
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/brain-factory/connectome-definition?' and text()='Connectome definition']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/lab/cell-composition/interactive?' and text()='Cell composition']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/lab/cell-model-assignment?' and text()='Cell model assignment']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/lab/connectome-definition?' and text()='Connectome definition']"],
             ["xpath", "//button[text()='Build & Simulate']"]
         ]
     ]

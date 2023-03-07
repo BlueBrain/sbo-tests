@@ -39,7 +39,7 @@ def test_open_brain_factory(sb):
     login(sb)
 
     logger.info('Opening brain factory')
-    brain_factory_link = '//a[@href="/mmb-beta/mmb-beta/brain-factory/load-brain-config?"]'
+    brain_factory_link = '//a[@href="/mmb-beta/mmb-beta/lab/load-brain-config?"]'
     wait_for_element(sb, brain_factory_link)
     sb.find_element(brain_factory_link, by='xpath').click()
 
@@ -55,17 +55,16 @@ def test_open_brain_factory(sb):
     logger.info('Config ID: %s', refConfigId)
     config_link.click()
 
-    titles = ['Brain region', 'Basic cell groups and regions']
-    for title in titles:
-        logger.info('Checking for %s title', title)
-        tree_xpath = f'//span[text()="{title}"]'
-        wait_for_element(sb, tree_xpath)
+    title_xpaths = ['//span[text()="Brain region"]', '//div[text()="Basic cell groups and regions"]']
+    for title_xpath in title_xpaths:
+        logger.info('Checking for %s title', title_xpath)
+        wait_for_element(sb, title_xpath)
 
     menu_items = [
-        ('Cell composition', f'/mmb-beta/mmb-beta/brain-factory/cell-composition/interactive?brainModelConfigId={refConfigId}'),
-        ('Cell model assignment', f'/mmb-beta/mmb-beta/brain-factory/cell-model-assignment?brainModelConfigId={refConfigId}'),
-        ('Connectome definition', f'/mmb-beta/mmb-beta/brain-factory/connectome-definition?brainModelConfigId={refConfigId}'),
-        ('Connection model assignment', f'/mmb-beta/mmb-beta/brain-factory/connectome-model-assignment?brainModelConfigId={refConfigId}'),
+        ('Cell composition', f'/mmb-beta/mmb-beta/lab/cell-composition/interactive?brainModelConfigId={refConfigId}'),
+        ('Cell model assignment', f'/mmb-beta/mmb-beta/lab/cell-model-assignment?brainModelConfigId={refConfigId}'),
+        ('Connectome definition', f'/mmb-beta/mmb-beta/lab/connectome-definition?brainModelConfigId={refConfigId}'),
+        ('Connection model assignment', f'/mmb-beta/mmb-beta/lab/connectome-model-assignment?brainModelConfigId={refConfigId}'),
     ]
     for menu_item in menu_items:
         logger.info('Checking menu item: %s', menu_item[0])
@@ -76,8 +75,8 @@ def test_open_brain_factory(sb):
     wait_for_element(sb, '//button[text()="Build & Simulate"]')
 
     buttons = [
-        ("Interactive", f"/mmb-beta/mmb-beta/brain-factory/cell-composition/interactive?brainModelConfigId={refConfigId}"),
-        ("Configuration", f"/mmb-beta/mmb-beta/brain-factory/cell-composition/configuration?brainModelConfigId={refConfigId}")
+        ("Interactive", f"/mmb-beta/mmb-beta/lab/cell-composition/interactive?brainModelConfigId={refConfigId}"),
+        ("Configuration", f"/mmb-beta/mmb-beta/lab/cell-composition/configuration?brainModelConfigId={refConfigId}")
     ]
     for button in buttons:
         logger.info('Checking button %s', button[0])
