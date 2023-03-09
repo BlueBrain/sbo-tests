@@ -10,6 +10,7 @@
     [
         "/mmb-beta/observatory",
         [
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta?']/h1[text()='Brain Observatory']"],
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Brain & cells annotations']"],
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/experimental-data?']/div/h1[text()='Experimental Data']"],
             ["xpath", "//a[@href='/mmb-beta/mmb-beta/simulation-campaigns?']/div/h1[text()='Digital reconstructions']"],
@@ -18,9 +19,15 @@
         ]
     ],
     [
+        "/mmb-beta/experimental-data",
+        [
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/observatory?' and text()='Brain Observatory']"]
+        ]
+    ],
+    [
         "/mmb-beta/simulation-campaigns",
         [
-            ["xpath", "//a[@href='/mmb-beta/mmb-beta/observatory?' and text()='The Observatory']"],
+            ["xpath", "//a[@href='/mmb-beta/mmb-beta/observatory?' and text()='Brain Observatory']"],
             ["xpath", "//div[text()='Simulation Campaigns']"],
             ["xpath", "//input[@type='text' and @value='']"],
             ["xpath", "//input[@type='text' and @value='']/../../span/button/span[text()='Search']"],
