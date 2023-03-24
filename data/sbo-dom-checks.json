@@ -12,14 +12,14 @@
         [
             ["xpath", "//a[@href='/mmb-beta']/h1[text()='Brain Observatory']"],
             ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Brain & cells annotations']"],
-            ["xpath", "//a[@href='/mmb-beta/electrophysiology']/div/h1[text()='Experimental Data']"],
+            ["xpath", "//a[@href='/mmb-beta/observatory/electrophysiology']/div/h1[text()='Electrophysiology Data']"],
             ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Digital reconstructions']"],
             ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Simulations']"],
             ["xpath", "//button[text()='Browse']", "=", 4]
         ]
     ],
     [
-        "/mmb-beta/electrophysiology",
+        "/mmb-beta/observatory/electrophysiology",
         [
             ["xpath", "//a[@href='/mmb-beta/observatory' and text()='Brain Observatory']"]
         ]
