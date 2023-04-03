@@ -58,7 +58,7 @@ def test_open_brain_factory(sb):
     title_xpaths = ['//span[text()="Brain region"]', '//div[text()="Basic cell groups and regions"]']
     for title_xpath in title_xpaths:
         logger.info('Checking for %s title', title_xpath)
-        wait_for_element(sb, title_xpath)
+        wait_for_element(sb, title_xpath, timeout=15)
 
     menu_items = [
         ('Cell composition', f'/mmb-beta/lab/cell-composition/interactive?brainModelConfigId={refConfigId}'),

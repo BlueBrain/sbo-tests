@@ -97,11 +97,12 @@ def wait_for_element(selbase, element, find_by='xpath', timeout=10):
         timeout (int): how long, in seconds, to wait (defaults to 10)
     """
     logger.debug('Waiting for %s by %s for up to %s seconds', element, find_by, timeout)
-    element = WebDriverWait(selbase, timeout=timeout).until(
+    found_element = WebDriverWait(selbase, timeout=timeout).until(
         lambda d: d.find_element(element, by=find_by),
         message=f'Timeout waiting for {element} on {selbase.get_current_url()}')
+    logger.debug('Found element %s', element)
 
-    return element
+    return found_element
 
 
 def wait_for_elements(selbase, element, find_by='xpath', timeout=10):
