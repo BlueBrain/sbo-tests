@@ -55,7 +55,7 @@ def test_open_brain_factory(sb):
     logger.info('Config ID: %s', refConfigId)
     config_link.click()
 
-    title_xpaths = ['//span[text()="Brain region"]', '//div[text()="Basic cell groups and regions"]']
+    title_xpaths = ['//span[text()="Brain region"]', '//span[text()="Basic cell groups and regions"]']
     for title_xpath in title_xpaths:
         logger.info('Checking for %s title', title_xpath)
         wait_for_element(sb, title_xpath, timeout=15)
