@@ -2,32 +2,25 @@
     [
         "/mmb-beta",
         [
-            ["xpath", "//div[text()='Brain Observatory']"],
-            ["xpath", "//div[text()='Brain Lab']"],
-            ["xpath", "//div[text()='Brain Simulation']"]
+            ["xpath", "//div[text()='Explore']"],
+            ["xpath", "//div[text()='Build']"],
+            ["xpath", "//div[text()='Simulate']"]
         ]
     ],
     [
-        "/mmb-beta/observatory",
+        "/mmb-beta/explore",
         [
-            ["xpath", "//a[@href='/mmb-beta']/h1[text()='Brain Observatory']"],
+            ["xpath", "//a[@href='/mmb-beta']/h1[text()='Explore']"],
             ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Brain & cells annotations']"],
-            ["xpath", "//a[@href='/mmb-beta/observatory/electrophysiology']/div/h1[text()='Electrophysiology Data']"],
+            ["xpath", "//div[@role='menuitem']/h1[text()='Experimental Data']"],
             ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Digital reconstructions']"],
             ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Simulations']"],
-            ["xpath", "//button[text()='Browse']", "=", 4]
-        ]
-    ],
-    [
-        "/mmb-beta/observatory/electrophysiology",
-        [
-            ["xpath", "//a[@href='/mmb-beta/observatory' and text()='Brain Observatory']"]
+            ["xpath", "//button[text()='Browse']", "=", 3]
         ]
     ],
     [
         "/mmb-beta/simulation-campaigns",
         [
-            ["xpath", "//a[@href='/mmb-beta/observatory' and text()='Brain Observatory']"],
             ["xpath", "//div[text()='Simulation Campaigns']"],
             ["xpath", "//input[@type='text' and @value='']"],
             ["xpath", "//input[@type='text' and @value='']/../../span/button/span[text()='Search']"],
@@ -42,7 +35,7 @@
         ]
     ],
     [
-        "/mmb-beta/lab/load-brain-config",
+        "/mmb-beta/build/load-brain-config",
         [
             ["xpath", "//div[text()='Release 23.01']"],
             ["xpath", "//a[@href='/mmb-beta' and text()='Back home']"],
@@ -56,12 +49,12 @@
         ]
     ],
     [
-        "/mmb-beta/lab/cell-model-assignment",
+        "/mmb-beta/build/cell-model-assignment",
         [
             ["xpath", "//a[@href='/mmb-beta']"],
-            ["xpath", "//a[@href='/mmb-beta/lab/cell-composition/interactive' and text()='Cell composition']"],
-            ["xpath", "//a[@href='/mmb-beta/lab/cell-model-assignment' and text()='Cell model assignment']"],
-            ["xpath", "//a[@href='/mmb-beta/lab/connectome-definition' and text()='Connectome definition']"],
+            ["xpath", "//a[@href='/mmb-beta/build/cell-composition/interactive' and text()='Cell composition']"],
+            ["xpath", "//a[@href='/mmb-beta/build/cell-model-assignment' and text()='Cell model assignment']"],
+            ["xpath", "//a[@href='/mmb-beta/build/connectome-definition' and text()='Connectome definition']"],
             ["xpath", "//button[text()='Build & Simulate']"]
         ]
     ]

@@ -29,9 +29,9 @@ def test_open_brain_factory(sb):
     Check whether the side menu loads
     Check whether these buttons load:
       * Cell Composition
-      * Cell Model Assignemnt
+      * Cell Model Assignment
       * Connectome Definition
-      * Connectome Model Assignment
+      * Connection Model Assignment
       * Interactive
       * Configuration
       * Build & Simulate
@@ -39,7 +39,7 @@ def test_open_brain_factory(sb):
     login(sb)
 
     logger.info('Opening brain factory')
-    brain_factory_link = '//a[@href="/mmb-beta/lab/load-brain-config"]'
+    brain_factory_link = '//a[@href="/mmb-beta/build/load-brain-config"]'
     wait_for_element(sb, brain_factory_link)
     sb.find_element(brain_factory_link, by='xpath').click()
 
@@ -61,10 +61,10 @@ def test_open_brain_factory(sb):
         wait_for_element(sb, title_xpath, timeout=15)
 
     menu_items = [
-        ('Cell composition', f'/mmb-beta/lab/cell-composition/interactive?brainModelConfigId={refConfigId}'),
-        ('Cell model assignment', f'/mmb-beta/lab/cell-model-assignment?brainModelConfigId={refConfigId}'),
-        ('Connectome definition', f'/mmb-beta/lab/connectome-definition?brainModelConfigId={refConfigId}'),
-        ('Connection model assignment', f'/mmb-beta/lab/connectome-model-assignment?brainModelConfigId={refConfigId}'),
+        ('Cell composition', f'/mmb-beta/build/cell-composition/interactive?brainModelConfigId={refConfigId}'),
+        ('Cell model assignment', f'/mmb-beta/build/cell-model-assignment?brainModelConfigId={refConfigId}'),
+        ('Connectome definition', f'/mmb-beta/build/connectome-definition?brainModelConfigId={refConfigId}'),
+        ('Connection model assignment', f'/mmb-beta/build/connectome-model-assignment?brainModelConfigId={refConfigId}'),
     ]
     for menu_item in menu_items:
         logger.info('Checking menu item: %s', menu_item[0])
@@ -75,8 +75,8 @@ def test_open_brain_factory(sb):
     wait_for_element(sb, '//button[text()="Build & Simulate"]')
 
     buttons = [
-        ("Interactive", f"/mmb-beta/lab/cell-composition/interactive?brainModelConfigId={refConfigId}"),
-        ("Configuration", f"/mmb-beta/lab/cell-composition/configuration?brainModelConfigId={refConfigId}")
+        ("Interactive", f"/mmb-beta/build/cell-composition/interactive?brainModelConfigId={refConfigId}"),
+        ("Configuration", f"/mmb-beta/build/cell-composition/configuration?brainModelConfigId={refConfigId}")
     ]
     for button in buttons:
         logger.info('Checking button %s', button[0])
