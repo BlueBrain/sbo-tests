@@ -63,7 +63,7 @@ def test_open_brain_factory(sb):
     menu_items = [
         ('Cell composition', f'/mmb-beta/build/cell-composition/interactive?brainModelConfigId={refConfigId}'),
         ('Cell model assignment', f'/mmb-beta/build/cell-model-assignment?brainModelConfigId={refConfigId}'),
-        ('Connectome definition', f'/mmb-beta/build/connectome-definition?brainModelConfigId={refConfigId}'),
+        ('Connectome definition', f'/mmb-beta/build/connectome-definition/configuration?brainModelConfigId={refConfigId}'),
         ('Connection model assignment', f'/mmb-beta/build/connectome-model-assignment?brainModelConfigId={refConfigId}'),
     ]
     for menu_item in menu_items:

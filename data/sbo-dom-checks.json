@@ -54,7 +54,7 @@
             ["xpath", "//a[@href='/mmb-beta']"],
             ["xpath", "//a[@href='/mmb-beta/build/cell-composition/interactive' and text()='Cell composition']"],
             ["xpath", "//a[@href='/mmb-beta/build/cell-model-assignment' and text()='Cell model assignment']"],
-            ["xpath", "//a[@href='/mmb-beta/build/connectome-definition' and text()='Connectome definition']"],
+            ["xpath", "//a[@href='/mmb-beta/build/connectome-definition/configuration' and text()='Connectome definition']"],
             ["xpath", "//button[text()='Build & Simulate']"]
         ]
     ]
