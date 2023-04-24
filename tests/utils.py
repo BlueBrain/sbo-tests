@@ -5,7 +5,7 @@ import time
 
 from io import BytesIO
 from PIL import Image
-from selenium.common import exceptions
+from selenium.common import exceptions, NoSuchElementException
 from selenium.webdriver.support.wait import WebDriverWait
 
 

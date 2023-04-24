@@ -5,3 +5,4 @@ testresults.xml
 data/credentials.json
 *.log
 .idea/
+.DS_Store

@@ -17,6 +17,50 @@
             ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Simulations']"],
             ["xpath", "//button[text()='Browse']", "=", 3]
         ]
+
+    ],
+    [
+        "/mmb-beta/explore/electrophysiology",
+        [
+            ["xpath", "//div[text()='Electrophysiology Recording']"],
+            ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
+            ["xpath", "//div[text()='Brain Region']"],
+            ["xpath", "//div[text()='E-Type']"],
+            ["xpath", "//div[text()='Data']"],
+            ["xpath", "//div[text()='Specie']"],
+            ["xpath", "//div[text()='Contributor']"],
+            ["xpath", "//div[text()='Date']"]
+        ]
+    ],
+    [
+        "/mmb-beta/explore/morphology",
+        [
+            ["xpath", "//div[text()='Neuron Morphologies']"]
+        ]
+    ],
+    [
+        "/mmb-beta/explore/bouton-density",
+       [
+           ["xpath", "//div[text()='Bouton Density']"]
+       ]
+    ],
+    [
+        "/mmb-beta/explore/neuron-density",
+       [
+           ["xpath", "//div[text()='Neuron Density']"]
+       ]
+    ],
+    [
+        "/mmb-beta/explore/layer-thickness",
+       [
+           ["xpath", "//div[text()='Layer Thickness']"]
+       ]
+    ],
+    [
+        "/mmb-beta/explore/synapse-per-connection",
+       [
+           ["xpath", "//div[text()='Synapse per connection']"]
+       ]
     ],
     [
         "/mmb-beta/simulation-campaigns",
