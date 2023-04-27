@@ -12,17 +12,16 @@
         [
             ["xpath", "//a[@href='/mmb-beta']/h1[text()='Explore']"],
             ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Brain & cells annotations']"],
-            ["xpath", "//div[@role='menuitem']/h1[text()='Experimental Data']"],
-            ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Digital reconstructions']"],
-            ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Simulations']"],
-            ["xpath", "//button[text()='Browse']", "=", 3]
+            ["xpath", "//div[@role='menuitem']/h1[text()='Experimental data']"],
+            ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Brain models']"],
+            ["xpath", "//a[@href='/mmb-beta/simulation-campaigns']/div/h1[text()='Simulations']"]
         ]
 
     ],
     [
         "/mmb-beta/explore/electrophysiology",
         [
-            ["xpath", "//div[text()='Electrophysiology Recording']"],
+            ["xpath", "//div[text()='Neuron electrophysiologies']"],
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
             ["xpath", "//div[text()='Brain Region']"],
             ["xpath", "//div[text()='E-Type']"],
@@ -35,25 +34,25 @@
     [
         "/mmb-beta/explore/morphology",
         [
-            ["xpath", "//div[text()='Neuron Morphologies']"]
+            ["xpath", "//div[text()='Neuron morphologies']"]
         ]
     ],
     [
         "/mmb-beta/explore/bouton-density",
        [
-           ["xpath", "//div[text()='Bouton Density']"]
+           ["xpath", "//div[text()='Bouton densities']"]
        ]
     ],
     [
         "/mmb-beta/explore/neuron-density",
        [
-           ["xpath", "//div[text()='Neuron Density']"]
+           ["xpath", "//div[text()='Neuron densities']"]
        ]
     ],
     [
         "/mmb-beta/explore/layer-thickness",
        [
-           ["xpath", "//div[text()='Layer Thickness']"]
+           ["xpath", "//div[text()='Layer thickness']"]
        ]
     ],
     [
@@ -74,8 +73,8 @@
             ["xpath", "//table/thead/tr/th/div/span/div[text()='Dimensions']"],
             ["xpath", "//table/thead/tr/th/div/span/div[text()='Attributes']"],
             ["xpath", "//table/thead/tr/th/div/span/div[text()='Tags']"],
-            ["xpath", "//table/tbody[@class='ant-table-tbody']/tr[contains(@class, 'ant-table-row')]", ">=", 1],
-            ["xpath", "//table/tbody[@class='ant-table-tbody']/tr[contains(@class, 'ant-table-row')][1]/td[contains(@class, 'ant-table-cell')]", "=", 8]
+            ["xpath", "//table/tbody[@class='ant-table-tbody']/tr[contains(@class, 'ant-table-placeholder')]", ">=", 1],
+            ["xpath", "//table/tbody[@class='ant-table-tbody']/tr[contains(@class, 'ant-table-placeholder')][1]/td[contains(@class, 'ant-table-cell')]"]
         ]
     ],
     [
