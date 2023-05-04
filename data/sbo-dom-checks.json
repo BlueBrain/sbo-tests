@@ -23,12 +23,13 @@
         [
             ["xpath", "//div[text()='Neuron electrophysiologies']"],
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
-            ["xpath", "//div[text()='Brain Region']"],
+            ["xpath", "//th[contains(div/text(), 'Brain region')]"],
             ["xpath", "//div[text()='E-Type']"],
             ["xpath", "//div[text()='Data']"],
-            ["xpath", "//div[text()='Specie']"],
-            ["xpath", "//div[text()='Contributor']"],
-            ["xpath", "//div[text()='Date']"]
+            ["xpath", "//div[text()='Species']"],
+            ["xpath", "//div[text()='Contributor(s)']"],
+            ["xpath", "//div[text()='Created at']"],
+            ["xpath", "//div[text()='Reference']"]
         ]
     ],
     [
