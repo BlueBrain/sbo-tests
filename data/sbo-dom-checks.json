@@ -28,7 +28,7 @@
             ["xpath", "//div[text()='Data']"],
             ["xpath", "//div[text()='Species']"],
             ["xpath", "//div[text()='Contributor(s)']"],
-            ["xpath", "//div[text()='Created at']"],
+            ["xpath", "//div[text()='Created on']"],
             ["xpath", "//div[text()='Reference']"]
         ]
     ],
