@@ -21,7 +21,7 @@
     [
         "/mmb-beta/explore/electrophysiology",
         [
-            ["xpath", "//div[text()='Neuron electrophysiologies']"],
+            ["xpath", "//div[text()='Neuron electrophysiology']"],
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
             ["xpath", "//th[contains(div/text(), 'Brain region')]"],
             ["xpath", "//div[text()='E-Type']"],
@@ -35,19 +35,19 @@
     [
         "/mmb-beta/explore/morphology",
         [
-            ["xpath", "//div[text()='Neuron morphologies']"]
+            ["xpath", "//div[text()='Neuron morphology']"]
         ]
     ],
     [
         "/mmb-beta/explore/bouton-density",
        [
-           ["xpath", "//div[text()='Bouton densities']"]
+           ["xpath", "//div[text()='Bouton density']"]
        ]
     ],
     [
         "/mmb-beta/explore/neuron-density",
        [
-           ["xpath", "//div[text()='Neuron densities']"]
+           ["xpath", "//div[text()='Neuron density']"]
        ]
     ],
     [
