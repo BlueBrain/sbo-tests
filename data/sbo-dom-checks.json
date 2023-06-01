@@ -25,12 +25,12 @@
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
             ["xpath", "//th/div[1][contains(text(),'BRAIN REGION')]"],
             ["xpath", "//th/div[1][contains(text(),'E-TYPE')]"],
-            ["xpath", "//div[text()='DATA']"],
-            ["xpath", "//div[text()='Conditions']"],
+            ["xpath", "//div[text()='NAME']"],
+            ["xpath", "//div[text()='CONDITIONS']"],
             ["xpath", "//div[text()='SPECIES']"],
-            ["xpath", "//div[text()='CONTRIBUTOR(S)']"],
+            ["xpath", "//div[text()='CONTRIBUTORS']"],
             ["xpath", "//div[text()='CREATED ON']"],
-            ["xpath", "//div[text()='Reference']"]
+            ["xpath", "//div[text()='REFERENCE']"]
         ]
     ],
     [
