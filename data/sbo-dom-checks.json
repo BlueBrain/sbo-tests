@@ -10,7 +10,8 @@
     [
         "/mmb-beta/explore",
         [
-            ["xpath", "//a[@href='/mmb-beta/explore']/h1[text()='Explore']"],
+            ["xpath", "//h1[normalize-space()='Explore']"],
+            ["xpath", "//button[contains(.,'Back home')]"],
             ["xpath", "//a[@href='/mmb-beta/explore/simulation-campaigns']/div/h1[text()='Brain & cells annotations']"],
             ["xpath", "//div[@role='menuitem']/h1[text()='Experimental data']"],
             ["xpath", "//a[@href='/mmb-beta/explore/simulation-campaigns']/div/h1[text()='Brain models']"],
