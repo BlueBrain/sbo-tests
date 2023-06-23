@@ -24,14 +24,14 @@
         [
             ["xpath", "//div[text()='Neuron electrophysiology']"],
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
-            ["xpath", "//tr/th[contains(.,'BRAIN REGION')]"],
-            ["xpath", "//tr/th/div[1]/span[contains(.,'E-TYPE')]"],
-            ["xpath", "//tr/th/div[1]/span[contains(.,'NAME')]"],
-            ["xpath", "//tr/th/div[1]/span[contains(.,'CONDITIONS')]"],
-            ["xpath", "//tr/th/div[1]/span[contains(.,'SPECIES')]"],
-            ["xpath", "//tr/th/div[1]/span[contains(.,'CONTRIBUTORS')]"],
-            ["xpath", "//tr/th/div[1]/span[contains(.,'CREATED ON')]"],
-            ["xpath", "//tr/th/div[1]/span[contains(.,'REFERENCE')]"]
+            ["xpath", "//span[normalize-space()='Brain Region']"],
+            ["xpath", "//span[contains(normalize-space(),'E-Type')]"],
+            ["xpath", "//span[normalize-space()='Name']"],
+            ["xpath", "//span[normalize-space()='Conditions']"],
+            ["xpath", "//span[normalize-space()='Species']"],
+            ["xpath", "//span[normalize-space()='Contributors']"],
+            ["xpath", "//span[normalize-space()='Creation Date']"],
+            ["xpath", "//span[normalize-space()='Reference']"]
         ]
     ],
     [
