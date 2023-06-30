@@ -24,14 +24,14 @@
         [
             ["xpath", "//div[text()='Neuron electrophysiology']"],
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
-            ["xpath", "//button[normalize-space()='Brain Region']"],
-            ["xpath", "//button[contains(normalize-space(),'E-Type')]"],
-            ["xpath", "//button[normalize-space()='Name']"],
-            ["xpath", "//button[normalize-space()='Conditions']"],
-            ["xpath", "//button[normalize-space()='Species']"],
-            ["xpath", "//button[normalize-space()='Contributors']"],
-            ["xpath", "//button[normalize-space()='Creation date']"],
-            ["xpath", "//button[normalize-space()='Reference']"]
+            ["xpath", "//div[text()='Brain Region']"],
+            ["xpath", "//div[text()='E-Type']"],
+            ["xpath", "//div[text()='Name']"],
+            ["xpath", "//div[text()='Conditions']"],
+            ["xpath", "//div[text()='Species']"],
+            ["xpath", "//div[text()='Contributors']"],
+            ["xpath", "//div[text()='Creation date']"],
+            ["xpath", "//div[text()='Reference']"]
         ]
     ],
     [
