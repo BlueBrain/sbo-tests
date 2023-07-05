@@ -27,11 +27,9 @@
             ["xpath", "//div[text()='Brain Region']"],
             ["xpath", "//div[text()='E-Type']"],
             ["xpath", "//div[text()='Name']"],
-            ["xpath", "//div[text()='Conditions']"],
             ["xpath", "//div[text()='Species']"],
             ["xpath", "//div[text()='Contributors']"],
-            ["xpath", "//div[text()='Creation date']"],
-            ["xpath", "//div[text()='Reference']"]
+            ["xpath", "//div[text()='Creation date']"]
         ]
     ],
     [
@@ -55,7 +53,7 @@
     [
         "/mmb-beta/explore/layer-thickness",
        [
-           ["xpath", "//div[text()='Layer thickness']"]
+           ["xpath", "//div[text()='Layer']"]
        ]
     ],
     [
