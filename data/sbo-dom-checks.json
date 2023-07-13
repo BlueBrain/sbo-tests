@@ -24,12 +24,12 @@
         [
             ["xpath", "//div[text()='Neuron electrophysiology']"],
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
-            ["xpath", "//span[text()='Brain Region']"],
-            ["xpath", "//span[text()='E-Type']"],
-            ["xpath", "//span[text()='Name']"],
-            ["xpath", "//span[text()='Species']"],
-            ["xpath", "//span[text()='Contributors']"],
-            ["xpath", "//span[text()='Creation date']"]
+            ["xpath", "//div[text()='Brain Region']"],
+            ["xpath", "//div[text()='E-Type']"],
+            ["xpath", "//div[text()='Name']"],
+            ["xpath", "//div[text()='Species']"],
+            ["xpath", "//div[text()='Contributors']"],
+            ["xpath", "//div[text()='Creation date']"]
         ]
     ],
     [
@@ -53,7 +53,7 @@
     [
         "/mmb-beta/explore/layer-thickness",
        [
-           ["xpath", "//span[text()='Layer']"]
+           ["xpath", "//div[text()='Layer']"]
        ]
     ],
     [
@@ -85,9 +85,8 @@
         "/mmb-beta/build/cell-model-assignment",
         [
             ["xpath", "//a[@href='/mmb-beta']"],
-            ["xpath", "//a[@href='/mmb-beta/build/cell-composition/interactive' and text()='Cell composition']"],
-            ["xpath", "//a[@href='/mmb-beta/build/cell-model-assignment' and text()='Cell model assignment']"],
-            ["xpath", "//a[@href='/mmb-beta/build/connectome-definition/configuration' and text()='Connectome definition']"],
+            ["xpath", "//div[text()='Cell model assignment']"],
+            ["xpath, //button[text()='Configuration']"],
             ["xpath", "//button[text()='Build & Simulate']"]
         ]
     ]
