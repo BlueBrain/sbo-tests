@@ -62,35 +62,26 @@ def test_open_brain_factory(sb):
         logger.info('Checking for %s title', title_xpath)
         wait_for_element(sb, title_xpath, timeout=15)
 
-    # top_nav = f'//button[@type="button" and @aria-haspopup="menu"]/div[@class="flex flex-row gap-x-3"]'
-    # top_nav = f'//div[@class="flex min-w-[290px] h-full"]//div[contains(text(), "Cell composition")]'
-    top_nav = f'//button[@type="button" and @aria-haspopup="menu"]//div[contains(text(), "Cell composition")]'
+    top_nav = '//button[@type="button" and @aria-haspopup="menu"]//div[contains(text(), "Cell composition")]'
     wait_for_element(sb, top_nav).click()
 
     menu_navigation_items = ['//div[@role="menu"]//div[contains(text(),"Cell composition")]',
-                             '//div[@role="menu"]//div[contains(text(),"Cell composition")]',
+                             '//div[@role="menu"]//div[contains(text(),"Cell model assignment")]',
                              '//div[@role="menu"]//div[contains(text(),"Connectome definition")]',
                              '//div[@role="menu"]//div[contains(text(),"Connection model assignment")]'
                              ]
     for nav_item in menu_navigation_items:
         logger.info('Checking for %s menu navigation items', nav_item)
-        wait_for_element(sb, nav_item, timeout=5)
-
-    logger.info('Checking Build & Simulate button')
-    wait_for_element(sb, '//button[text()="Build & Simulate"]')
+        wait_for_element(sb, nav_item, timeout=1)
 
 
-    # second_nav_menu = f'//div[@class="flex justify-end min-w-[290px] h-full"]/button[@type="button"]'
-    # second_nav_menu = f'//button[@type="button"]/div[contains(text(), "Interactive")]'
-    # wait_for_element(sb, second_nav_menu, timeout=2).click()
-
-    # time.sleep(20)
     # buttons = [
     #     '//button[text()="Interactive"]',
-    #     '//button[text()="Configuration"]'
+    #     '//button[text()="Configuration"]',
     # ]
     # for button in buttons:
     #     logger.info('Checking button %s', button)
-    #     wait_for_element(sb, button)
-
-#
+    #     button_wait = wait_for_element(sb, button)
+    #
+    logger.info('Checking Build & Simulate button')
+    wait_for_element(sb, '//button[text()="Build & Simulate"]')
