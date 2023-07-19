@@ -12,10 +12,8 @@
         [
             ["xpath", "//h1[normalize-space()='Explore']"],
             ["xpath", "//button[contains(.,'Back home')]"],
-            ["xpath", "//a[@href='/mmb-beta/explore/simulation-campaigns']/div/h1[text()='Brain & cells annotations']"],
-            ["xpath", "//div[@role='menuitem']/h1[text()='Experimental data']"],
-            ["xpath", "//a[@href='/mmb-beta/explore/simulation-campaigns']/div/h1[text()='Brain models']"],
-            ["xpath", "//a[@href='/mmb-beta/explore/simulation-campaigns']/div/h1[text()='Simulations']"]
+            ["xpath", "//a[@href='/mmb-beta/explore/brain-models']/div/h2[text()='Brain Models']"],
+            ["xpath", "//a[@href='/mmb-beta/explore/simulation-campaigns']/div/h2[text()='Simulations']"]
         ]
 
     ],
