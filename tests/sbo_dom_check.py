@@ -68,7 +68,7 @@ def test_open_brain_factory(sb):
     menu_navigation_items = ['//div[@role="menu"]//div[contains(text(),"Cell composition")]',
                              '//div[@role="menu"]//div[contains(text(),"Cell model assignment")]',
                              '//div[@role="menu"]//div[contains(text(),"Connectome definition")]',
-                             '//div[@role="menu"]//div[contains(text(),"Connection model assignment")]'
+                             '//div[@role="menu"]//div[contains(text(),"Connectome model assignment")]'
                              ]
     for nav_item in menu_navigation_items:
         logger.info('Checking for %s menu navigation items', nav_item)
