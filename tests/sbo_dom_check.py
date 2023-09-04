@@ -57,18 +57,21 @@ def test_open_brain_factory(sb):
     logger.info('Config ID: %s', refConfigId)
     config_link.click()
 
-    title_xpaths = ['//span[text()="Brain region"]', '//span[text()="Basic cell groups and regions"]']
+    title_xpaths = ['//span[text()="Brain region"]', '//span[text()="Basic cell groups and '
+                                                     'regions"]']
     for title_xpath in title_xpaths:
         logger.info('Checking for %s title', title_xpath)
         wait_for_element(sb, title_xpath, timeout=15)
 
-    top_nav = '//button[@type="button" and @aria-haspopup="menu"]//div[contains(text(), "Cell composition")]'
+    top_nav = '//button[@type="button" and @aria-haspopup="menu"]//div[contains(text(), ' \
+              '"Cell composition")]'
     wait_for_element(sb, top_nav).click()
 
     menu_navigation_items = ['//div[@role="menu"]//div[contains(text(),"Cell composition")]',
                              '//div[@role="menu"]//div[contains(text(),"Cell model assignment")]',
                              '//div[@role="menu"]//div[contains(text(),"Connectome definition")]',
-                             '//div[@role="menu"]//div[contains(text(),"Connectome model assignment")]'
+                             '//div[@role="menu"]//div[contains(text(),"Connectome model '
+                             'assignment")]'
                              ]
     for nav_item in menu_navigation_items:
         logger.info('Checking for %s menu navigation items', nav_item)
