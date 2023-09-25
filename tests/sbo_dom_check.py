@@ -47,7 +47,7 @@ def test_open_brain_factory(sb):
 
     config = 'Release 23.01'
     logger.info('Opening config %s', config)
-    config_link = f'//div[text()="{config}"]/../..'
+    config_link = f'//div[text()="{config}"]/following-sibling::div/a'
     wait_for_element(sb, config_link)
     config_link = sb.find_element(config_link, by='xpath')
     f = furl(config_link.get_attribute("href"))
