@@ -12,13 +12,12 @@
         [
             ["xpath", "//h1[normalize-space()='Explore']"],
             ["xpath", "//button[contains(.,'Back home')]"],
-            ["xpath", "//a[@href='/mmb-beta/explore/brain-models']/div/h2[text()='Brain Models']"],
-            ["xpath", "//a[@href='/mmb-beta/explore/simulation-campaigns']/div/h2[text()='Simulations']"]
+            ["xpath", "//a[@href='/mmb-beta/explore/interactive']//div/h2[text()='Interactive exploration']"]
         ]
 
     ],
     [
-        "/mmb-beta/explore/electrophysiology",
+        "/mmb-beta/explore/interactive/electrophysiology",
         [
             ["xpath", "//h1[text()='Neuron electrophysiology']"],
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
@@ -31,37 +30,37 @@
         ]
     ],
     [
-        "/mmb-beta/explore/morphology",
+        "/mmb-beta/explore/interactive/morphology",
         [
             ["xpath", "//h1[text()='Neuron morphology']"]
         ]
     ],
     [
-        "/mmb-beta/explore/bouton-density",
+        "/mmb-beta/explore/interactive/bouton-density",
        [
            ["xpath", "//h1[text()='Bouton density']"]
        ]
     ],
     [
-        "/mmb-beta/explore/neuron-density",
+        "/mmb-beta/explore/interactive/neuron-density",
        [
            ["xpath", "//h1[text()='Neuron density']"]
        ]
     ],
     [
-        "/mmb-beta/explore/layer-thickness",
+        "/mmb-beta/explore/interactive/layer-thickness",
        [
            ["xpath", "//h1[text()='Layer Thickness']"]
        ]
     ],
     [
-        "/mmb-beta/explore/synapse-per-connection",
+        "/mmb-beta/explore/interactive/synapse-per-connection",
        [
            ["xpath", "//h1[text()='Synapse per connection']"]
        ]
     ],
     [
-        "/mmb-beta/explore/simulation-campaigns",
+        "/mmb-beta/explore/interactive/simulation-campaigns",
         [
         ]
     ],
