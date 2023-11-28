@@ -5,11 +5,10 @@ import time
 
 # pylint: disable=R0913
 
-from furl import furl
 import pytest
 
 from tests.utils import check_url, load_test_data, wait_for_element, login, logger
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 
 
 @pytest.mark.parametrize("path,elements", load_test_data())
@@ -18,7 +17,7 @@ def test_sbo(sb, path, elements):
 
     resource = 'https://bbp.epfl.ch'
     url = f'{resource}{path}'
-    logger.info(f'Checking %s', url)
+    logger.info(f'Checking {url}')
     login(sb)
     check_url(sb, url, elements)
 
@@ -40,22 +39,31 @@ def test_open_brain_factory(sb):
     """
     login(sb)
 
-    logger.info('Opening brain factory')
-    brain_factory_link = '//a[@href="/mmb-beta/build/load-brain-config"]'
-    wait_for_element(sb, brain_factory_link)
-    sb.find_element(brain_factory_link, by='xpath').click()
+    logger.info('Selecting a brain model')
+    logger.info('Opening Build menu')
+    build_menu_item = "//h3[text()='Build']"
+    wait_for_element(sb, build_menu_item)
+    sb.find_element(build_menu_item, by='xpath').click()
 
+    browse_brain_models_item = "//h2[text()='Browse brain models']"
+    wait_for_element(sb, browse_brain_models_item)
+    sb.find_element(browse_brain_models_item, by='xpath').click()
+
+    found_config = False
     config = 'Release 23.01'
-    logger.info('Opening config %s', config)
-    config_link = f'//div[text()="{config}"]/following-sibling::div/a'
-    wait_for_element(sb, config_link)
-    config_link = sb.find_element(config_link, by='xpath')
-    f = furl(config_link.get_attribute("href"))
-    logger.debug('Url for config: %s', f.tostr())
-    logger.debug('Querystring: %s', str(f.query))
-    refConfigId = str(f.query).split('=')[1]
-    logger.info('Config ID: %s', refConfigId)
-    config_link.click()
+    config_element = f"//a[text()='{config}']"
+    while not found_config:
+        try:
+            wait_for_element(sb, config_element)
+            found_config = True
+        except TimeoutException:
+            logger.info("Maybe on the next page")
+            next_page_button = "//button[@title='Go to Next Page']"
+            wait_for_element(sb, next_page_button)
+            sb.find_element(next_page_button, by='xpath').click()
+
+    logger.info(f"Found config {config}")
+    sb.find_element(config_element, by='xpath').click()
 
     title_xpaths = ['//span[text()="Brain region"]', '//span[text()="Basic Cell Groups and '
                                                      'Regions"]']

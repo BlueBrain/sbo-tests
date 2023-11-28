@@ -2,17 +2,34 @@
     [
         "/mmb-beta",
         [
-            ["xpath", "//div[text()='Explore']"],
-            ["xpath", "//div[text()='Build']"],
-            ["xpath", "//div[text()='Simulate']"]
+            ["xpath", "//h3[text()='Explore']"],
+            ["xpath", "//h3[text()='Build']"],
+            ["xpath", "//h3[text()='Simulate']"]
         ]
     ],
     [
-        "/mmb-beta/explore",
+        "/mmb-beta/explore/interactive",
         [
-            ["xpath", "//h1[normalize-space()='Explore']"],
-            ["xpath", "//button[contains(.,'Back home')]"],
-            ["xpath", "//a[@href='/mmb-beta/explore/interactive']//div/h2[text()='Interactive exploration']"]
+            ["xpath", "//a[text()='Explore']"],
+            ["xpath", "//span[@aria-label='home']"],
+            ["xpath", "//span[text()='Brain region']"],
+            ["xpath", "//a[@href='/mmb-beta/explore/interactive' and text()='Explore']"]
+        ]
+
+    ],
+    [
+        "/mmb-beta/explore/literature",
+        [
+            ["xpath", "//input[@id='gqa-question']"],
+            ["xpath", "//span[text()='Parameters']"],
+            ["xpath", "//a[@href='/mmb-beta/explore/interactive' and text()='Explore']"]
+        ]
+
+    ],
+    [
+        "/mmb-beta/explore/portals",
+        [
+            ["xpath", "//a[@href='/mmb-beta/explore/interactive']/button/div[text()='back to explore']"]
         ]
 
     ],
@@ -60,8 +77,9 @@
        ]
     ],
     [
-        "/mmb-beta/explore/interactive/simulation-campaigns",
+        "/mmb-beta/explore/simulation-campaigns",
         [
+            ["xpath", "//h1[@aria-label='listing-view-title' and text()='Simulation Campaigns']"]
         ]
     ],
     [
