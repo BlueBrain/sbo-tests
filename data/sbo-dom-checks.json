@@ -13,23 +13,23 @@
             ["xpath", "//a[text()='Explore']"],
             ["xpath", "//span[@aria-label='home']"],
             ["xpath", "//span[text()='Brain region']"],
-            ["xpath", "//a[@href='/mmb-beta/explore/interactive' and text()='Explore']"]
+            ["xpath", "//a[@href='/mmb-beta/main?tab=explore' and text()='Explore']"]
         ]
 
     ],
     [
         "/mmb-beta/explore/literature",
         [
-            ["xpath", "//input[@id='gqa-question']"],
+            ["xpath", "//textarea[@id='gqa-question']"],
             ["xpath", "//span[text()='Parameters']"],
-            ["xpath", "//a[@href='/mmb-beta/explore/interactive' and text()='Explore']"]
+            ["xpath", "//a[@href='/mmb-beta/main?tab=explore' and text()='Explore']"]
         ]
 
     ],
     [
         "/mmb-beta/explore/portals",
         [
-            ["xpath", "//a[@href='/mmb-beta/explore/interactive']/button/div[text()='back to explore']"]
+            ["xpath", "//a[@href='/mmb-beta/main?tab=explore']/button/div[text()='back to explore']"]
         ]
 
     ],
@@ -43,7 +43,7 @@
             ["xpath", "//div[text()='Name']"],
             ["xpath", "//div[text()='Species']"],
             ["xpath", "//div[text()='Contributors']"],
-            ["xpath", "//div[text()='Creation date']"]
+            ["xpath", "//div[text()='Registration date']"]
         ]
     ],
     [
@@ -80,29 +80,6 @@
         "/mmb-beta/explore/simulation-campaigns",
         [
             ["xpath", "//h1[@aria-label='listing-view-title' and text()='Simulation Campaigns']"]
-        ]
-    ],
-    [
-        "/mmb-beta/build/load-brain-config",
-        [
-            ["xpath", "//div[text()='Release 23.01']"],
-            ["xpath", "//a[@href='/mmb-beta' and text()='Back home']"],
-            ["xpath", "//table/thead/tr/th/div/span[text()='NAME']"],
-            ["xpath", "//table/thead/tr/th/div/span[text()='DESCRIPTION']"],
-            ["xpath", "//table/thead/tr/th/div/span[text()='CREATED BY']"],
-            ["xpath", "//button/span[text()='Public configurations']"],
-            ["xpath", "//button/span[text()='My configurations']"],
-            ["xpath", "//button/span[text()='Archives']"],
-            ["xpath", "//input[@placeholder='Search brain configuration...']"]
-        ]
-    ],
-    [
-        "/mmb-beta/build/cell-model-assignment",
-        [
-            ["xpath", "//a[@href='/mmb-beta']"],
-            ["xpath", "//div[text()='Cell model assignment']"],
-            ["xpath, //button[text()='Configuration']"],
-            ["xpath", "//button[text()='Build & Simulate']"]
         ]
     ]
 ]
