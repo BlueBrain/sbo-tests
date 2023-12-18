@@ -221,7 +221,7 @@ def login(selbase):
     selbase.open(resource)
     try:
         logger.info('Looking for login button')
-        login_button = selbase.find_element('//button[@aria-label="Login"]', by='xpath')
+        login_button = selbase.find_element('//button[@aria-label="Log in"]', by='xpath')
     except NoSuchElementException:
         logger.info('Login button not found - assuming already logged in')
         return
@@ -241,4 +241,4 @@ def login(selbase):
         credentials['password'])
     selbase.find_element(login, by='xpath').click()
 
-    wait_for_element(selbase, '//button[text()="Logout"]')
+    wait_for_element(selbase, '//button[text()="Log out"]')
