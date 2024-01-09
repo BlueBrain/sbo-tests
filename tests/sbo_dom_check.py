@@ -8,7 +8,7 @@ import time
 import pytest
 
 from tests.utils import check_url, load_test_data, wait_for_element, login, logger
-from selenium.common.exceptions import TimeoutException
+import seleniumbase
 
 
 @pytest.mark.parametrize("path,elements", load_test_data())
@@ -56,7 +56,7 @@ def test_open_brain_factory(sb):
         try:
             wait_for_element(sb, config_element)
             found_config = True
-        except TimeoutException:
+        except seleniumbase.common.exceptions.NoSuchElementException:
             logger.info("Maybe on the next page")
             next_page_button = "//button[@title='Go to Next Page']"
             wait_for_element(sb, next_page_button)

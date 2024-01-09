@@ -6,4 +6,4 @@ pillow
 pytest
 pytest-repeat
 pytest-reportlog
-seleniumbase==4.7.0
+seleniumbase==4.22.5

@@ -21,7 +21,7 @@
         "/mmb-beta/explore/literature",
         [
             ["xpath", "//textarea[@id='gqa-question']"],
-            ["xpath", "//span[text()='Parameters']"],
+            ["xpath", "//span[text()='Refine your search']"],
             ["xpath", "//a[@href='/mmb-beta/main?tab=explore' and text()='Explore']"]
         ]
 
@@ -73,7 +73,7 @@
     [
         "/mmb-beta/explore/interactive/data/synapse-per-connection",
        [
-           ["xpath", "//span[contains(text(),'Synapse per connection')]"]
+           ["xpath", "//div[contains(text(),'Brain Region [From]')]"]
        ]
     ],
     [
