@@ -65,12 +65,6 @@
        ]
     ],
     [
-        "/mmb-beta/explore/interactive/data/layer-thickness",
-       [
-           ["xpath", "//span[contains(text(),'Layer thickness')]"]
-       ]
-    ],
-    [
         "/mmb-beta/explore/interactive/data/synapse-per-connection",
        [
            ["xpath", "//div[contains(text(),'Brain Region [From]')]"]
