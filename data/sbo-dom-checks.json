@@ -21,7 +21,7 @@
         "/mmb-beta/explore/literature",
         [
             ["xpath", "//textarea[@id='gqa-question']"],
-            ["xpath", "//span[text()='Refine your search']"],
+            ["xpath", "//button[@type='submit' and contains(text(), 'Search')]"],
             ["xpath", "//a[@href='/mmb-beta/main?tab=explore' and text()='Explore']"]
         ]
 
