@@ -34,7 +34,7 @@
 
     ],
     [
-        "/mmb-beta/explore/interactive/data/electrophysiology",
+        "/mmb-beta/explore/interactive/experimental/electrophysiology",
         [
             ["xpath", "//span[contains(text(),'Electrophysiology')]"],
             ["xpath", "//span[contains(@class, 'anticon-search') and @aria-label='search']"],
@@ -47,25 +47,25 @@
         ]
     ],
     [
-        "/mmb-beta/explore/interactive/data/morphology",
+        "/mmb-beta/explore/interactive/experimental/morphology",
         [
             ["xpath", "//span[contains(text(),'Morphology')]"]
         ]
     ],
     [
-        "/mmb-beta/explore/interactive/data/bouton-density",
+        "/mmb-beta/explore/interactive/experimental/bouton-density",
        [
            ["xpath", "//span[contains(text(),'Bouton density')]"]
        ]
     ],
     [
-        "/mmb-beta/explore/interactive/data/neuron-density",
+        "/mmb-beta/explore/interactive/experimental/neuron-density",
        [
            ["xpath", "//span[contains(text(),'Neuron density')]"]
        ]
     ],
     [
-        "/mmb-beta/explore/interactive/data/synapse-per-connection",
+        "/mmb-beta/explore/interactive/experimental/synapse-per-connection",
        [
            ["xpath", "//div[contains(text(),'Brain Region [From]')]"]
        ]
