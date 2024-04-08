@@ -1,6 +1,6 @@
 [
     [
-        "/mmb-beta",
+        "/mmb-beta/main",
         [
             ["xpath", "//h3[text()='Explore']"],
             ["xpath", "//h3[text()='Build']"],
